@@ -10,4 +10,9 @@ public class PlaneMethods : MonoBehaviour
     {
         collisionEvent.Occurred();
     }
+
+    private void OnDestroy()
+    {
+        collisionEvent.Destroyed();
+    }
 }

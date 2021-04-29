@@ -23,4 +23,12 @@ public class Event : ScriptableObject
             eListeners[i].OnEventOccurs();
         }
     }
+
+    public void Destroyed()
+    {
+        for (int i = 0; i < eListeners.Count; i++)
+        {
+            eListeners[i].gEvent.Unregister(eListeners[i]);
+        }
+    }
 }
