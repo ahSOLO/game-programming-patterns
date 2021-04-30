@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "newEvent", menuName = "Game Event", order = 52)]
 public class Event : ScriptableObject
 {
-    private List<EventListener> eListeners = new List<EventListener>();
+    private HashSet<EventListener> eListeners = new HashSet<EventListener>();
 
     public void Register(EventListener listener)
     {
@@ -18,17 +18,17 @@ public class Event : ScriptableObject
 
     public void Occurred()
     {
-        for (int i = 0; i < eListeners.Count; i++)
+        foreach (var eListener in eListeners)
         {
-            eListeners[i].OnEventOccurs();
-        }
+            eListener.OnEventOccurs();
+        }        
     }
 
     public void Destroyed()
     {
-        for (int i = 0; i < eListeners.Count; i++)
+        foreach (var eListener in eListeners)
         {
-            eListeners[i].gEvent.Unregister(eListeners[i]);
+            eListener.gEvent.Unregister(eListener);
         }
     }
 }
