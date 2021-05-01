@@ -25,6 +25,11 @@ public class InputReader : MonoBehaviour
         }
         return Vector3.zero;
     }
+
+    public bool ReadSpace()
+    {
+        return Input.GetKeyDown(KeyCode.Space);
+    }
     
     public bool ReadUndo()
     {
